@@ -1,0 +1,255 @@
+@margin-sm: 10%;
+@dot-sm: 13%;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.domino-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  height: calc(~"100% - 250px");
+}
+
+.controls-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 250px;
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+}
+
+.domino-wrapper {
+  width: 110px;
+  height: 200px;
+  border: 2px solid black;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+
+  &__top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 50%;
+  }
+
+  &__dash {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    transform: translate(-50%, -50%);
+    height: 1%;
+    background-color: black;
+    border-radius: 10px;
+  }
+
+  &__bottom {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__part {
+    &:hover {
+      cursor: pointer;
+    }
+
+    &--selected {
+      box-shadow: inset 0 0 10px 2px black;
+    }
+
+    &--one {
+      .domino-wrapper__circle--1 {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .domino-wrapper__circle--2,
+      .domino-wrapper__circle--3,
+      .domino-wrapper__circle--4,
+      .domino-wrapper__circle--5,
+      .domino-wrapper__circle--6 {
+        display: none;
+      }
+    }
+
+    &--two {
+      .domino-wrapper__circle--1 {
+        top: @margin-sm;
+        right: @margin-sm;
+      }
+
+      .domino-wrapper__circle--2 {
+        bottom: @margin-sm;
+        left: @margin-sm;
+      }
+
+      .domino-wrapper__circle--3,
+      .domino-wrapper__circle--4,
+      .domino-wrapper__circle--5,
+      .domino-wrapper__circle--6 {
+        display: none;
+      }
+    }
+
+    &--three {
+      .domino-wrapper__circle--1 {
+        top: @margin-sm;
+        right: @margin-sm;
+      }
+
+      .domino-wrapper__circle--2 {
+        bottom: @margin-sm;
+        left: @margin-sm;
+      }
+
+      .domino-wrapper__circle--3 {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .domino-wrapper__circle--4,
+      .domino-wrapper__circle--5,
+      .domino-wrapper__circle--6 {
+        display: none;
+      }
+    }
+
+    &--four {
+      .domino-wrapper__circle--1 {
+        top: @margin-sm;
+        left: @margin-sm;
+      }
+
+      .domino-wrapper__circle--2 {
+        top: @margin-sm;
+        right: @margin-sm;
+      }
+
+      .domino-wrapper__circle--3 {
+        bottom: @margin-sm;
+        left: @margin-sm;
+      }
+
+      .domino-wrapper__circle--4 {
+        bottom: @margin-sm;
+        right: @margin-sm;
+      }
+
+      .domino-wrapper__circle--5,
+      .domino-wrapper__circle--6 {
+        display: none;
+      }
+    }
+
+    &--five {
+      .domino-wrapper__circle--1 {
+        top: @margin-sm;
+        left: @margin-sm;
+      }
+
+      .domino-wrapper__circle--2 {
+        top: @margin-sm;
+        right: @margin-sm;
+      }
+
+      .domino-wrapper__circle--3 {
+        bottom: @margin-sm;
+        left: @margin-sm;
+      }
+
+      .domino-wrapper__circle--4 {
+        bottom: @margin-sm;
+        right: @margin-sm;
+      }
+
+      .domino-wrapper__circle--5 {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .domino-wrapper__circle--6 {
+        display: none;
+      }
+    }
+
+    &--six {
+      .domino-wrapper__circle--1 {
+        top: @margin-sm;
+        left: @margin-sm;
+      }
+
+      .domino-wrapper__circle--2 {
+        top: @margin-sm;
+        right: @margin-sm;
+      }
+
+      .domino-wrapper__circle--3 {
+        bottom: @margin-sm;
+        left: @margin-sm;
+      }
+
+      .domino-wrapper__circle--4 {
+        bottom: @margin-sm;
+        right: @margin-sm;
+      }
+
+      .domino-wrapper__circle--5 {
+        top: 50%;
+        left: @margin-sm;
+        transform: translateY(-50%);
+      }
+
+      .domino-wrapper__circle--6 {
+        top: 50%;
+        right: @margin-sm;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  &__circle {
+    position: absolute;
+    height: @dot-sm;
+    width: @dot-sm;
+    background-color: black;
+    border-radius: 50%;
+  }
+}

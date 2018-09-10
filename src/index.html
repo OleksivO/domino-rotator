@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Domino</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css">
+  </head>
+  <body ng-app="app"
+        ng-controller="App as ctrl">
+    <div class="wrapper">
+      <div class="domino-container">
+        <div class="domino-wrapper"
+             id="domino"
+             ng-style="ctrl.dominoStyle">
+          <div class="domino-wrapper__part domino-wrapper__top"
+               ng-click="ctrl.choosePartForTypeSelection('top')"
+               ng-class="ctrl.dominoPartTypeClass('top')">
+
+            <div class="domino-wrapper__circle domino-wrapper__circle--1"></div>
+            <div class="domino-wrapper__circle domino-wrapper__circle--2"></div>
+            <div class="domino-wrapper__circle domino-wrapper__circle--3"></div>
+            <div class="domino-wrapper__circle domino-wrapper__circle--4"></div>
+            <div class="domino-wrapper__circle domino-wrapper__circle--5"></div>
+            <div class="domino-wrapper__circle domino-wrapper__circle--6"></div>
+
+          </div>
+
+          <div class="domino-wrapper__dash"></div>
+
+          <div class="domino-wrapper__part domino-wrapper__bottom"
+               ng-click="ctrl.choosePartForTypeSelection('bottom')"
+               ng-class="ctrl.dominoPartTypeClass('bottom')">
+
+            <div class="domino-wrapper__circle domino-wrapper__circle--1"></div>
+            <div class="domino-wrapper__circle domino-wrapper__circle--2"></div>
+            <div class="domino-wrapper__circle domino-wrapper__circle--3"></div>
+            <div class="domino-wrapper__circle domino-wrapper__circle--4"></div>
+            <div class="domino-wrapper__circle domino-wrapper__circle--5"></div>
+            <div class="domino-wrapper__circle domino-wrapper__circle--6"></div>
+
+          </div>
+        </div>
+      </div>
+      
+      <div class="controls-container">
+        <div class="controls-container__overlay"
+             ng-if="ctrl.isInterfaceDisabled">
+        </div>
+        <div class="container">
+          <div class="row text-center">
+            <div class="col-sm-12">
+              <div class="btn-group">
+                <div class="btn-group">
+                  <button class="btn btn-primary"
+                          ng-click="ctrl.rotateDomino('left')">
+                    Rotate left
+                  </button>
+                </div>
+                <div class="btn-group">
+                  <button class="btn btn-danger"
+                          ng-click="ctrl.resetDomino()">
+                    Reset
+                  </button>
+                </div>
+                <div class="btn-group">
+                  <button class="btn btn-primary"
+                          ng-click="ctrl.rotateDomino('right')">
+                    Rotate right
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <label for="domino.type">Domino Type</label>
+              <select ng-model="ctrl.domino[ctrl.selectedPart].type"
+                      id="domino.type"
+                      class="form-control"
+                      ng-disabled="!ctrl.selectedPart">
+                <option ng-value="face"
+                        ng-repeat="face in ctrl.availableFaces">
+                  {{ face }}
+                </option>
+              </select> 
+            </div>
+            <div class="col-sm-offset-8"></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <label for="domino_size">Domino size</label>
+              <input type="range"
+                     id="domino_size"
+                     class="form-control"
+                     min="1"
+                     step="1"
+                     max="5"
+                     ng-model="ctrl.dominoSize"> 
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <label for="domino_speed">Domino rotation speed</label>
+              <input type="range"
+                     id="domino_speed"
+                     class="form-control"
+                     min="1"
+                     step="1"
+                     max="5"
+                     ng-model="ctrl.rotationSpeed"> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
